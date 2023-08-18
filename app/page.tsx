@@ -1,8 +1,9 @@
 
+import { HomePage } from "@/components/pages/Home"
 export default function Home() {
   return (
    <>
-   NextJS Tailwind AND Redux RTK Query
+   <HomePage />
    </>
   )
 }
