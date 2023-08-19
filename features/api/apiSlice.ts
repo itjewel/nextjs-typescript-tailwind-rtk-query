@@ -1,16 +1,24 @@
 // Create Slice
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react"
 interface Video {
-  id: number
-  title: string
+  id: number;
+  title: string;
+  description: string;
+  author: string;
+  date: string;
+  duration: string;
+  views: string;
+  link: string;
+  thumbnail: string;
 }
+
 export const appSlice = createApi({
   reducerPath:"api",
   baseQuery: fetchBaseQuery({
-    baseUrl:"http://localhost:9000"
+    baseUrl: process.env.NEXT_PUBLIC_API_URL
   }),
   endpoints:(builder) => ({
-    getVideos: builder.query({
+    getVideos: builder.query<Video[], void>({
       query: () => "/videos",
     }),
   }),
