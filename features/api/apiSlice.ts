@@ -25,9 +25,20 @@ export const appSlice = createApi({
     getVideo: builder.query({
       query: (videoId) =>`/videos/${videoId.id}`
     }),
+    getRelatedVideo: builder.query<Video[], void>({
+      query: (params) => {
+        const id = params.id;
+        const title = params.title;
+        const split = title.split(" ");
+        const tag = split.map((tag:string) =>`title_like=${tag}`)
+        const joinValue = tag.join("&")+`&_limit=4`;
+        const queryString = `/videos?${joinValue}`;
+        return queryString;
+      }
+    }),
 
   }),
 });
 
-export const { useGetVideosQuery, useGetVideoQuery } = appSlice
+export const { useGetVideosQuery, useGetVideoQuery, useGetRelatedVideoQuery } = appSlice
 
