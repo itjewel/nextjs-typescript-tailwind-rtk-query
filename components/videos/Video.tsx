@@ -14,7 +14,7 @@ interface VideoProps {
     }
 }
 export const Video: React.FC<VideoProps> = ({props}) => {
-    const {id,thumbnail,duration,author,title,views,date} = props;
+ const {id,thumbnail,duration,author,title,views,date} = props;
     //console.log(authorImage)
   return (
   <div className="col-span-12 sm:col-span-6 md:col-span-3 duration-300 hover:scale-[1.03]">

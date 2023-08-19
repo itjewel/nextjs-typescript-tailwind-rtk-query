@@ -18,11 +18,16 @@ export const appSlice = createApi({
     baseUrl: process.env.NEXT_PUBLIC_API_URL
   }),
   endpoints:(builder) => ({
+
     getVideos: builder.query<Video[], void>({
       query: () => "/videos",
     }),
+    getVideo: builder.query({
+      query: (videoId) =>`/videos/${videoId.id}`
+    }),
+
   }),
 });
 
-export const { useGetVideosQuery } = appSlice
+export const { useGetVideosQuery, useGetVideoQuery } = appSlice
 
