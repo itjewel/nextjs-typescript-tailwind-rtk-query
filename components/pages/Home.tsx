@@ -7,7 +7,7 @@ export const HomePage:React.FC = () => {
      if(isLoading) return <p>Loading...</p>
      if(isError) return <p>Error occurred while fetching videos. </p>
   return (    
-       <>
+       <>    
       {videos?.map((value) => (
            <Video key={value.id} props={value}/>
       ))}
