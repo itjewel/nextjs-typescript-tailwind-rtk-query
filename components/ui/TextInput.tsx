@@ -1,5 +1,5 @@
 
-interface TextInputType{
+interface TextInputType extends React.HTMLProps<HTMLInputElement> {
   title: string;
 }
 export const TextInput: React.FC<TextInputType> = ({ title, ...attributes }) => {

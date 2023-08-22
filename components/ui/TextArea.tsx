@@ -1,8 +1,8 @@
 
-interface TextAreaType{
+interface TextAreaType extends React.HTMLProps<HTMLTextAreaElement>{
     title: string;
   }
-export const TextArea:React.FC<TextAreaType> = ({ title, ...attributes }) => {
+export const TextArea: React.FC<TextAreaType> = ({ title, ...attributes }) => {
   return (
     <>
             <label className="block text-sm font-medium text-gray-700">
