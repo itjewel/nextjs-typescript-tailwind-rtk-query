@@ -4,9 +4,13 @@ import { TextArea } from "../ui/TextArea"
 import { TextInput } from "../ui/TextInput"
 import { Error } from "../ui/Error"
 import { useState } from "react"
+import { redirect, useRouter } from 'next/navigation'
+import { useAddSingleVideoFromYoutubeMutation } from "@/features/api/apiSlice"
 
 
 export const AddVideoForm = () => {
+    const { push } = useRouter();
+   const [getRelatedVideo, {isError,isLoading,isSuccess,data}] = useAddSingleVideoFromYoutubeMutation();
     const [postValue, setPostValue] = useState({
         title: "",
         author:"",
@@ -17,13 +21,19 @@ export const AddVideoForm = () => {
         duration:"",
         views:"",
     })
-    const handleSubmit = (e)=>{
-        e.preventDefault();
+    const handleSubmit = (e:any)=>{
+      e.preventDefault();
+      getRelatedVideo(postValue);
+      push('/');
+      //  e.preventDefault();
         console.log(postValue)
 
     }
   return (
-        <form method="POST" onSubmit={handleSubmit}>
+        <form method="POST" onSubmit={handleSubmit}> 
+        <>
+        {console.log(data)}
+        </>           
         <div className="shadow overflow-hidden sm:rounded-md">
             <div className="px-4 py-5 bg-white sm:p-6">
                 <div className="grid grid-cols-6 gap-6">
@@ -33,7 +43,8 @@ export const AddVideoForm = () => {
                             title="Video title"  
                             name="title"
                             value={postValue.title}  
-                            onChange={(e)=>setPostValue({...postValue, title:(e.target as HTMLInputElement).value})}                     
+                            onChange={(e)=>{setPostValue({...postValue, title:(e.target as HTMLInputElement).value})}}
+                            // onChange={(e)=>setPostValue({...postValue, title:(e.target as HTMLInputElement).value})}                     
                         />
                     </div>
 

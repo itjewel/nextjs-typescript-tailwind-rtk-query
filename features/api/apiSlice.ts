@@ -37,8 +37,16 @@ export const appSlice = createApi({
       }
     }),
 
+    addSingleVideoFromYoutube: builder.mutation({
+      query: (body)=>({
+        url: 'videos',
+        method: "POST",
+        body
+      }),
+    }),
+   
   }),
 });
 
-export const { useGetVideosQuery, useGetVideoQuery, useGetRelatedVideoQuery } = appSlice
+export const { useGetVideosQuery, useGetVideoQuery, useGetRelatedVideoQuery,useAddSingleVideoFromYoutubeMutation } = appSlice
 
