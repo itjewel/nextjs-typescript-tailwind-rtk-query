@@ -11,7 +11,7 @@ If you need any queries or want to hire me please inform me by ▶️ Email: [md
 ↘️ JSON SERVER \
 
 
-## Getting Started for nextJs Project
+## Front-End Project setup
 
 First, run the development server:
 
@@ -22,7 +22,7 @@ yarn dev
 # or
 pnpm dev
 ```
-## Getting Started for server Project
+## API OR Backend setup
 ```bash
 cd server
 // nextjs-typescript-tailwind-rtk-query/server
